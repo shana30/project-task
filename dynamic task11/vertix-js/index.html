@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌈 Weekly Mood Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#ff6b6b,#feca57,#48dbfb,#5f27cd);
+    background-size:400% 400%;
+    animation:gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:420px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+h1{
+    margin-bottom:15px;
+    font-size:2rem;
+}
+
+p{
+    font-size:1.1rem;
+}
+
+.result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    font-size:1.2rem;
+    font-weight:bold;
+    display:none;
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🌟 Weekly Mood Tracker 🌟</h1>
+    <p>Check your day's special motivation!</p>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+
+let day = prompt("Enter the current day of the week:");
+
+let message = "";
+let color = "";
+
+if(day !== null){
+
+    day = day.toLowerCase();
+
+    switch(day){
+
+        case "monday":
+            message = "😴 Monday - New week, stay focused!";
+            color = "#3498db";
+            break;
+
+        case "tuesday":
+            message = "🚀 Tuesday - Keep the momentum going!";
+            color = "#1abc9c";
+            break;
+
+        case "wednesday":
+            message = "💪 Wednesday - Halfway through the week!";
+            color = "#f39c12";
+            break;
+
+        case "thursday":
+            message = "🔥 Thursday - Almost there!";
+            color = "#e67e22";
+            break;
+
+        case "friday":
+            message = "🎉 Friday - Weekend is coming!";
+            color = "#2ecc71";
+            break;
+
+        case "saturday":
+            message = "😎 Saturday - Time to relax!";
+            color = "#9b59b6";
+            break;
+
+        case "sunday":
+            message = "🌞 Sunday - Prepare for the new week!";
+            color = "#e74c3c";
+            break;
+
+        default:
+            message = "❌ Invalid day. Please enter a valid day.";
+            color = "#ff4757";
+    }
+
+    alert(message);
+
+    let result = document.getElementById("result");
+    result.innerHTML = message;
+    result.style.background = color;
+    result.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
